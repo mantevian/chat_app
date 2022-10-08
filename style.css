@@ -1,0 +1,85 @@
+html {
+	min-width: 800px;
+}
+
+body {
+	background-color: rgb(34, 39, 46);
+	color: rgb(230, 230, 230);
+
+	font-family: Roboto;
+
+	margin: 0 15%;
+}
+
+.main-block {
+	margin: 10px;
+	padding: 15px;
+	background-color: rgb(41, 48, 58);
+	border-radius: 10px;
+}
+
+#header {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+#header-buttons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10%;
+}
+
+#main {
+	display: grid;
+	align-items: start;
+	grid-template-columns: 80px 1fr;
+}
+
+#main-content {
+	display: grid;
+	align-items: start;
+	grid-template-columns: 250px 3fr;
+}
+
+#avatar {
+	max-width: 100%;
+	border-radius: 10px;
+}
+
+#user-display-name {
+	font-size: 2em;
+	font-weight: 600;
+	overflow-wrap: anywhere;
+	margin: 4px 0px;
+	color: rgb(255, 90, 160)
+}
+
+#user-tag {
+	color: rgb(150, 150, 150);
+	font-weight: 300;
+	margin: 2px 0px 6px 0px;
+}
+
+#user-pronouns {
+	margin: 4px 0px 0px 0px;
+	font-weight: 400;
+	background-color: rgb(255, 90, 160, 0.3);
+	border: 2px solid rgb(255, 90, 160, 0.6);
+	border-radius: 5px;
+	padding: 4px;
+	display: inline-block;
+}
+
+.main-block-divider {
+	margin: 15px 0px;
+	height: 2px;
+	background-color: rgb(150, 150, 150, 0.1);
+}
+
+#user-bio {
+	color: rgb(200, 200, 200);
+}
+
+#user-bio br {
+	margin-bottom: 5px;
+}
