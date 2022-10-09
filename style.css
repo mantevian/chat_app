@@ -1,22 +1,40 @@
+:root {
+	--background-main: rgb(34, 39, 46);
+	--background-secondary: rgb(41, 48, 58);
+	--background-light: rgb(79, 97, 122);
+
+	--white: rgb(230, 230, 230);
+	--light-gray: rgb(180, 180, 180);
+	--gray: rgb(150, 150, 150);
+
+	--gray-20: rgb(150, 150, 150, 0.2);
+	
+	--accent: rgb(255, 90, 160);
+	--accent-60: rgb(255, 90, 160, 0.6);
+	--accent-30: rgb(255, 90, 160, 0.3);
+}
+
 html {
-	min-width: 800px;
+	min-width: 600px;
 }
 
 body {
-	background-color: rgb(34, 39, 46);
-	color: rgb(230, 230, 230);
+	background-color: var(--background-main);
+	color: var(--white);
 
 	font-family: Roboto;
 
-	margin: 0 15%;
+	margin: 0 calc(calc(100% - 600px) * 0.3);
 }
 
 .main-block {
 	margin: 10px;
 	padding: 15px;
-	background-color: rgb(41, 48, 58);
+	background-color: var(--background-secondary);
 	border-radius: 10px;
 }
+
+/* ----- HEADER ----- */
 
 #header {
 	display: grid;
@@ -29,11 +47,29 @@ body {
 	gap: 10%;
 }
 
+/* ----- MAIN ----- */
+
 #main {
 	display: grid;
 	align-items: start;
-	grid-template-columns: 80px 1fr;
+	grid-template-columns: 90px 1fr;
 }
+
+/* ----- LEFT LIST ----- */
+
+#own-profile-button {
+	display: inline-block;
+	width: 100%;
+}
+
+#own-profile-button img {
+	border-radius: 100%;
+	width: 28px;
+	padding: 6px;
+	background-color: var(--background-light);
+}
+
+/* ----- PROFILE PAGE ----- */
 
 #main-content {
 	display: grid;
@@ -41,43 +77,70 @@ body {
 	grid-template-columns: 250px 3fr;
 }
 
+/* ----- LEFT PROFILE TAB ----- */
+
+#left-content {
+	padding: 0;
+	position: relative;
+}
+
+#main-profile-top-block {
+	height: 130px;
+}
+
+#banner {
+	background-color: var(--accent);
+	height: 75px;
+	border-radius: 10px 10px 0px 0px;
+}
+
 #avatar {
-	max-width: 100%;
-	border-radius: 10px;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	width: 120px;
+	border-radius: 100%;
+	border: 5px solid var(--background-secondary);
+}
+
+#main-profile-info {
+	margin: 15px;
 }
 
 #user-display-name {
-	font-size: 2em;
+	font-size: 1.7em;
 	font-weight: 600;
 	overflow-wrap: anywhere;
 	margin: 4px 0px;
-	color: rgb(255, 90, 160)
+	color: var(--accent);
 }
 
 #user-tag {
-	color: rgb(150, 150, 150);
-	font-weight: 300;
 	margin: 2px 0px 6px 0px;
+	color: var(--gray);
+	font-weight: 300;
 }
 
 #user-pronouns {
-	margin: 4px 0px 0px 0px;
-	font-weight: 400;
-	background-color: rgb(255, 90, 160, 0.3);
-	border: 2px solid rgb(255, 90, 160, 0.6);
-	border-radius: 5px;
-	padding: 4px;
 	display: inline-block;
+	margin: 4px 0px 0px 0px;
+	padding: 4px;
+	background-color: var(--accent-30);
+
+	border: 2px solid var(--accent-60);
+	border-radius: 5px;
+
+	font-weight: 400;
 }
 
 .main-block-divider {
 	margin: 15px 0px;
 	height: 2px;
-	background-color: rgb(150, 150, 150, 0.1);
+	background-color: var(--gray-20);
 }
 
 #user-bio {
-	color: rgb(200, 200, 200);
+	color: var(--light-gray);
 }
 
 #user-bio br {
