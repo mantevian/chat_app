@@ -1,6 +1,7 @@
 :root {
 	--background-main: rgb(34, 39, 46);
 	--background-secondary: rgb(41, 48, 58);
+	--background-semi-light: rgb(52, 62, 75);
 	--background-light: rgb(79, 97, 122);
 
 	--white: rgb(230, 230, 230);
@@ -8,14 +9,10 @@
 	--gray: rgb(150, 150, 150);
 
 	--gray-20: rgb(150, 150, 150, 0.2);
-	
+
 	--accent: rgb(255, 90, 160);
 	--accent-60: rgb(255, 90, 160, 0.6);
 	--accent-30: rgb(255, 90, 160, 0.3);
-}
-
-html {
-	min-width: 600px;
 }
 
 body {
@@ -37,14 +34,42 @@ body {
 /* ----- HEADER ----- */
 
 #header {
+	z-index: 2;
+
+	position: sticky;
+	top: 0;
+
+	margin-top: 0px;
+	
+	max-height: 20px;
+	
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	
+	background-color: var(--background-light);
+	border-radius: 0px 0px 10px 10px;
 }
 
-#header-buttons {
+#header img {
+	height: 20px;
+}
+
+#burger-button {
+	display: none;
+}
+
+#logo {
+	display: flex;
+	justify-content: flex-start;
+}
+
+#settings-button {
 	display: flex;
 	justify-content: flex-end;
-	gap: 10%;
+}
+
+#burger-checkbox {
+	display: none;
 }
 
 /* ----- MAIN ----- */
@@ -79,18 +104,18 @@ body {
 
 /* ----- LEFT PROFILE TAB ----- */
 
-#left-content {
+.profile-left-block {
 	padding: 0;
 	position: relative;
 }
 
 #main-profile-top-block {
-	height: 130px;
+	height: 110px;
 }
 
 #banner {
 	background-color: var(--accent);
-	height: 75px;
+	height: 70px;
 	border-radius: 10px 10px 0px 0px;
 }
 
@@ -98,12 +123,13 @@ body {
 	position: absolute;
 	top: 15px;
 	left: 15px;
-	width: 120px;
+	width: 100px;
 	border-radius: 100%;
 	border: 5px solid var(--background-secondary);
 }
 
 #main-profile-info {
+	display: inline-block;
 	margin: 15px;
 }
 
@@ -131,6 +157,7 @@ body {
 	border-radius: 5px;
 
 	font-weight: 400;
+	font-size: 0.9em;
 }
 
 .main-block-divider {
@@ -140,9 +167,56 @@ body {
 }
 
 #user-bio {
+	font-size: 0.95em;
 	color: var(--light-gray);
 }
 
 #user-bio br {
 	margin-bottom: 5px;
+}
+
+@media screen and (max-width: 600px) {
+	body {
+		margin: 0;
+	}
+
+	#header {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	#logo {
+		justify-content: center;
+	}
+
+	#burger-button {
+		display: flex;
+		width: fit-content;
+	}
+
+	#left-list {
+		z-index: 1;
+
+		position: fixed;
+		top: 0;
+		
+		margin: 0;
+		padding-top: 80px;
+		
+		transform: translateX(-150%);
+		transition: transform 0.5s ease-in-out;
+
+		width: 60%;
+		height: 100%;
+
+		background-color: var(--background-semi-light);
+		border-radius: 0px 10px 10px 0px;
+	}
+
+	#burger-checkbox:checked ~ #left-list {
+		transform: translateX(0);
+	}
+
+	#main {
+		display: block;
+	}
 }
