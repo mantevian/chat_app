@@ -39,6 +39,15 @@ body {
 	background-color: var(--gray-15);
 }
 
+button {
+	background-color: var(--accent);
+	color: var(--white);
+	font-weight: 600;
+	border: none;
+	padding: 10px;
+	border-radius: 10px;
+}
+
 /* ----- HEADER ----- */
 
 #header {
@@ -126,7 +135,11 @@ body {
 #profile {
 	display: grid;
 	align-items: start;
-	grid-template-columns: 250px 3fr;
+	grid-template-columns: 300px 3fr;
+}
+
+#profile br {
+	margin-bottom: 5px;
 }
 
 /* ----- LEFT PROFILE TAB ----- */
@@ -179,33 +192,22 @@ body {
 	font-weight: 300;
 }
 
-#user-pronoun {
-	display: inline-block;
-	margin: 4px 0px 0px 0px;
-	padding: 4px;
-	background-color: var(--accent-30);
-
-	border: 2px solid var(--accent-60);
-	border-radius: 5px;
-
-	font-weight: 400;
-}
-
 #user-bio {
 	color: var(--light-gray);
-}
-
-#user-bio br {
-	margin-bottom: 5px;
 }
 
 #profile-secondary-block {
 	color: var(--light-gray);
 }
 
-#user-follow-info {
+#profile-buttons, #user-follow-info {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+}
+
+#follow-button, #message-button {
+	margin-right: 5px;
+	margin-left: 5px;
 }
 
 .follow-number {
@@ -214,7 +216,29 @@ body {
 	font-weight: 500;
 }
 
-@media screen and (max-width: 600px) {
+#user-pronouns {
+	margin-bottom: 15px;
+}
+
+#user-location, #user-birthday {
+	margin-bottom: 5px;
+}
+
+#pronoun {
+	display: inline-block;
+	margin: 4px 0px 0px 0px;
+	padding: 4px;
+
+	background-color: var(--accent-30);
+	color: var(--white);
+
+	border: 2px solid var(--accent-60);
+	border-radius: 5px;
+
+	font-weight: 400;
+}
+
+@media screen and (max-width: 800px) {
 	body {
 		margin: 0;
 	}
@@ -238,12 +262,12 @@ body {
 
 		position: fixed;
 		top: 0;
+		left: -100vw;
 
 		margin: 0;
 		padding-top: 80px;
 		padding-left: 25px;
 
-		transform: translateX(-150%);
 		transition: transform 0.5s ease-in-out;
 
 		width: 60%;
@@ -254,7 +278,7 @@ body {
 	}
 
 	#burger-checkbox:checked ~ #nav {
-		transform: translateX(0);
+		transform: translateX(100vw);
 	}
 
 	.nav-username {
