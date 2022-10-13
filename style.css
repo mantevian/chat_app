@@ -1,14 +1,14 @@
 :root {
-	--background-main: rgb(34, 39, 46);
-	--background-secondary: rgb(41, 48, 58);
-	--background-semi-light: rgb(52, 62, 75);
-	--background-light: rgb(79, 97, 122);
+	--background-main: rgb(29, 33, 38);
+	--background-secondary: rgb(38, 43, 51);
+	--background-semi-light: rgb(44, 51, 60);
+	--background-light: rgb(53, 61, 71);
 
 	--white: rgb(230, 230, 230);
 	--light-gray: rgb(180, 180, 180);
 	--gray: rgb(150, 150, 150);
 
-	--gray-20: rgb(150, 150, 150, 0.2);
+	--gray-15: rgb(150, 150, 150, 0.15);
 
 	--accent: rgb(255, 90, 160);
 	--accent-60: rgb(255, 90, 160, 0.6);
@@ -22,13 +22,21 @@ body {
 	font-family: Roboto;
 
 	margin: 0 calc(calc(100% - 600px) * 0.3);
+
+	font-size: 0.9em;
 }
 
-.main-block {
+.generic-block {
 	margin: 10px;
 	padding: 15px;
 	background-color: var(--background-secondary);
 	border-radius: 10px;
+}
+
+.generic-block-divider {
+	margin: 15px 0px;
+	height: 2px;
+	background-color: var(--gray-15);
 }
 
 /* ----- HEADER ----- */
@@ -40,12 +48,12 @@ body {
 	top: 0;
 
 	margin-top: 0px;
-	
+
 	max-height: 20px;
-	
+
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	
+
 	background-color: var(--background-light);
 	border-radius: 0px 0px 10px 10px;
 }
@@ -77,26 +85,45 @@ body {
 #main {
 	display: grid;
 	align-items: start;
-	grid-template-columns: 90px 1fr;
+	grid-template-columns: 76px 1fr;
 }
 
 /* ----- LEFT LIST ----- */
 
-#own-profile-button {
-	display: inline-block;
-	width: 100%;
+#nav {
+	padding: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
 }
 
-#own-profile-button img {
+.nav-line {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.nav-button {
+	display: block;
+	width: 40px;
+	height: 40px;
+	background-color: var(--background-light);
+	border-radius: 100%;
+}
+
+.nav-button img {
 	border-radius: 100%;
 	width: 28px;
 	padding: 6px;
-	background-color: var(--background-light);
+}
+
+.nav-username {
+	display: none;
 }
 
 /* ----- PROFILE PAGE ----- */
 
-#main-content {
+#profile {
 	display: grid;
 	align-items: start;
 	grid-template-columns: 250px 3fr;
@@ -104,12 +131,17 @@ body {
 
 /* ----- LEFT PROFILE TAB ----- */
 
-.profile-left-block {
+#profile-info {
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+}
+
+#profile-main-block {
 	padding: 0;
 	position: relative;
 }
 
-#main-profile-top-block {
+#banner-wrapper {
 	height: 110px;
 }
 
@@ -128,7 +160,7 @@ body {
 	border: 5px solid var(--background-secondary);
 }
 
-#main-profile-info {
+#profile-main-info {
 	display: inline-block;
 	margin: 15px;
 }
@@ -147,7 +179,7 @@ body {
 	font-weight: 300;
 }
 
-#user-pronouns {
+#user-pronoun {
 	display: inline-block;
 	margin: 4px 0px 0px 0px;
 	padding: 4px;
@@ -157,22 +189,29 @@ body {
 	border-radius: 5px;
 
 	font-weight: 400;
-	font-size: 0.9em;
-}
-
-.main-block-divider {
-	margin: 15px 0px;
-	height: 2px;
-	background-color: var(--gray-20);
 }
 
 #user-bio {
-	font-size: 0.95em;
 	color: var(--light-gray);
 }
 
 #user-bio br {
 	margin-bottom: 5px;
+}
+
+#profile-secondary-block {
+	color: var(--light-gray);
+}
+
+#user-follow-info {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.follow-number {
+	color: var(--white);
+	font-size: 1.2em;
+	font-weight: 500;
 }
 
 @media screen and (max-width: 600px) {
@@ -182,6 +221,7 @@ body {
 
 	#header {
 		grid-template-columns: 1fr 1fr 1fr;
+		margin: 0;
 	}
 
 	#logo {
@@ -193,15 +233,16 @@ body {
 		width: fit-content;
 	}
 
-	#left-list {
+	#nav {
 		z-index: 1;
 
 		position: fixed;
 		top: 0;
-		
+
 		margin: 0;
 		padding-top: 80px;
-		
+		padding-left: 25px;
+
 		transform: translateX(-150%);
 		transition: transform 0.5s ease-in-out;
 
@@ -212,11 +253,37 @@ body {
 		border-radius: 0px 10px 10px 0px;
 	}
 
-	#burger-checkbox:checked ~ #left-list {
+	#burger-checkbox:checked ~ #nav {
 		transform: translateX(0);
+	}
+
+	.nav-username {
+		display: inline;
 	}
 
 	#main {
 		display: block;
+	}
+
+	#profile {
+		margin: 5px;
+		grid-template-columns: none;
+		grid-template-rows: 1fr 1fr;
+	}
+
+	#profile-info {
+		grid-template-rows: none;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.generic-block {
+		margin: 5px;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	#profile-info {
+		grid-template-columns: none;
+		grid-template-rows: 1fr 1fr;
 	}
 }
