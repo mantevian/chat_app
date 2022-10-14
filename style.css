@@ -15,6 +15,11 @@
 	--accent-30: rgb(255, 90, 160, 0.3);
 }
 
+html {
+	overflow: hidden;
+	height: 100vh;
+}
+
 body {
 	background-color: var(--background-main);
 	color: var(--white);
@@ -24,6 +29,8 @@ body {
 	margin: 0 calc(calc(100% - 600px) * 0.3);
 
 	font-size: 0.9em;
+
+	height: 100%;
 }
 
 .generic-block {
@@ -51,10 +58,8 @@ button {
 /* ----- HEADER ----- */
 
 #header {
+	position: relative;
 	z-index: 2;
-
-	position: sticky;
-	top: 0;
 
 	margin-top: 0px;
 
@@ -95,6 +100,7 @@ button {
 	display: grid;
 	align-items: start;
 	grid-template-columns: 76px 1fr;
+	height: calc(100% - 60px);
 }
 
 /* ----- LEFT LIST ----- */
@@ -136,18 +142,23 @@ button {
 	display: grid;
 	align-items: start;
 	grid-template-columns: 300px 3fr;
+	height: 100%;
+	overflow: hidden;
 }
 
 #profile br {
 	margin-bottom: 5px;
 }
 
-/* ----- LEFT PROFILE TAB ----- */
-
-#profile-info {
-	display: grid;
-	grid-template-rows: 1fr 1fr;
+@media screen and (width > 800px) {
+	#profile-info,
+	#profile-posts {
+		max-height: calc(100% - 10px);
+		overflow-y: scroll;
+	}
 }
+
+/* ----- LEFT PROFILE TAB ----- */
 
 #profile-main-block {
 	padding: 0;
@@ -174,8 +185,9 @@ button {
 }
 
 #profile-main-info {
-	display: inline-block;
 	margin: 15px;
+	padding-bottom: 15px;
+	box-sizing: border-box;
 }
 
 #user-display-name {
@@ -200,12 +212,14 @@ button {
 	color: var(--light-gray);
 }
 
-#profile-buttons, #user-follow-info {
+#profile-buttons,
+#user-follow-info {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 }
 
-#follow-button, #message-button {
+#follow-button,
+#message-button {
 	margin-right: 5px;
 	margin-left: 5px;
 }
@@ -220,11 +234,12 @@ button {
 	margin-bottom: 15px;
 }
 
-#user-location, #user-birthday {
+#user-location,
+#user-birthday {
 	margin-bottom: 5px;
 }
 
-#pronoun {
+.pronoun {
 	display: inline-block;
 	margin: 4px 0px 0px 0px;
 	padding: 4px;
@@ -238,7 +253,12 @@ button {
 	font-weight: 400;
 }
 
-@media screen and (max-width: 800px) {
+#profile-secondary-block img {
+	width: 1em;
+	margin-right: 1ch;
+}
+
+@media screen and (width <= 800px) {
 	body {
 		margin: 0;
 	}
@@ -292,10 +312,12 @@ button {
 	#profile {
 		margin: 5px;
 		grid-template-columns: none;
-		grid-template-rows: 1fr 1fr;
+		height: 100%;
+		overflow: scroll;
 	}
 
 	#profile-info {
+		display: grid;
 		grid-template-rows: none;
 		grid-template-columns: 1fr 1fr;
 	}
@@ -305,9 +327,12 @@ button {
 	}
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (width <= 600px) {
 	#profile-info {
-		grid-template-columns: none;
-		grid-template-rows: 1fr 1fr;
+		display: block;
+	}
+
+	#profile-main-block {
+		margin-bottom: 10px;
 	}
 }
