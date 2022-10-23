@@ -3,9 +3,11 @@
 	--background-secondary: rgb(38, 43, 51);
 	--background-semi-light: rgb(44, 51, 60);
 	--background-light: rgb(53, 61, 71);
+	--background-lighter: rgb(56, 66, 79);
 
 	--white: rgb(230, 230, 230);
 	--light-gray: rgb(180, 180, 180);
+	--very-light-gray: rgb(200, 200, 200);
 	--gray: rgb(150, 150, 150);
 
 	--gray-15: rgb(150, 150, 150, 0.15);
@@ -55,6 +57,28 @@ button {
 	border-radius: 10px;
 }
 
+/* ----- SCROLLBAR ----- */
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+::-webkit-scrollbar-track {
+	background: none;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--background-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--background-lighter);
+}
+
+* {
+	scrollbar-color: var(--background-lighter) transparent;
+}
+
 /* ----- HEADER ----- */
 
 #header {
@@ -65,8 +89,8 @@ button {
 
 	max-height: 20px;
 
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	display: flex;
+	justify-content: space-between;
 
 	background-color: var(--background-light);
 	border-radius: 0px 0px 10px 10px;
@@ -103,9 +127,15 @@ button {
 	height: calc(100% - 60px);
 }
 
-/* ----- LEFT LIST ----- */
+/* ----- LEFT LIST (NAV) ----- */
 
 #nav {
+	overflow-y: scroll;
+	margin: 0;
+	height: calc(100% - 10px);
+}
+
+#nav-inner {
 	padding: 8px;
 	display: flex;
 	flex-direction: column;
@@ -150,15 +180,7 @@ button {
 	margin-bottom: 5px;
 }
 
-@media screen and (width > 800px) {
-	#profile-info,
-	#profile-posts {
-		max-height: calc(100% - 10px);
-		overflow-y: scroll;
-	}
-}
-
-/* ----- LEFT PROFILE TAB ----- */
+/* ----- FIRST PROFILE TAB ----- */
 
 #profile-main-block {
 	padding: 0;
@@ -207,6 +229,8 @@ button {
 #user-bio {
 	color: var(--light-gray);
 }
+
+/* ----- SECOND PROFILE TAB ----- */
 
 #profile-secondary-block {
 	color: var(--light-gray);
@@ -258,13 +282,108 @@ button {
 	margin-right: 1ch;
 }
 
+/* ----- POSTS TAB ----- */
+
+#create-post {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+#create-post > textarea {
+	resize: none;
+	background-color: var(--background-light);
+	border: none;
+	border-radius: 5px;
+	width: 100%;
+
+	padding: 5px;
+	font-size: 1rem;
+	color: var(--very-light-gray);
+	font: inherit;
+}
+
+#create-post > textarea:focus {
+	outline: none;
+	caret-color: var(--white);
+}
+
+#profile-posts {
+	display: flex;
+	flex-direction: column;
+}
+
+.post {
+	display: inline-block;
+	max-width: 100%;
+	overflow-wrap: anywhere;
+	color: var(--very-light-gray);
+}
+
+.post-heading {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	margin-bottom: 5px;
+}
+
+.post-avatar {
+	display: block;
+	width: 40px;
+	height: 40px;
+	background-color: var(--background-light);
+	border-radius: 100%;
+}
+
+.post-author-name {
+	font-size: 1.4em;
+	font-weight: 500;
+	color: var(--accent);
+}
+
+.post-author-tag {
+	font-size: 1em;
+	color: var(--gray);
+	font-weight: 300;
+}
+
+.post-timestamp {
+	font-size: 0.9em;
+	font-weight: 300;
+	color: var(--gray);
+	display: flex;
+	align-items: center;
+	margin-top: 5px;
+}
+
+.post-reactions {
+	margin-top: 10px;
+	display: flex;
+	gap: 5px;
+}
+
+.add-reaction-button {
+	opacity: 0.5;
+}
+
+.post-reactions img {
+	width: 20px;
+}
+
+@media screen and (width > 800px) {
+	#profile-info,
+	#profile-posts {
+		max-height: calc(100% - 10px);
+		overflow-y: scroll;
+	}
+}
+
 @media screen and (width <= 800px) {
 	body {
 		margin: 0;
 	}
 
 	#header {
-		grid-template-columns: 1fr 1fr 1fr;
 		margin: 0;
 	}
 
@@ -285,8 +404,7 @@ button {
 		left: -100vw;
 
 		margin: 0;
-		padding-top: 80px;
-		padding-left: 25px;
+		padding: 0;
 
 		transition: transform 0.5s ease-in-out;
 
@@ -295,6 +413,12 @@ button {
 
 		background-color: var(--background-semi-light);
 		border-radius: 0px 10px 10px 0px;
+	}
+
+	#nav-inner {
+		background-color: var(--background-semi-light);
+		padding: 80px 25px;
+		margin: 0;
 	}
 
 	#burger-checkbox:checked ~ #nav {
@@ -313,7 +437,7 @@ button {
 		margin: 5px;
 		grid-template-columns: none;
 		height: 100%;
-		overflow: scroll;
+		overflow-y: scroll;
 	}
 
 	#profile-info {
