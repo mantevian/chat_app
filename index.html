@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>таблица</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<button id="create" onclick="create_table()">создать таблицу</button>
+	<button id="add" onclick="add_row()">добавить строку</button>
+	<button id="remove" onclick="remove_row()">удалить строку №</button>
+	<input type="text" id="row-input" oninput="update_input_feedback()" />
+	<span id="input-feedback"></span>
+
+	<script src="script.js"></script>
+</body>
+
+</html>

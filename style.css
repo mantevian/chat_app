@@ -1,0 +1,21 @@
+#table {
+	border-collapse: collapse;
+	margin-top: 10px;
+}
+
+#table td {
+	border: 1px solid black;
+	padding: 5px;
+}
+
+#table tr.selected {
+	background-color: #dddddd;
+}
+
+.validate-true {
+	color: green;
+}
+
+.validate-false {
+	color: red;
+}
