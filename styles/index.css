@@ -1,129 +1,9 @@
-:root {
-	--background-main: rgb(29, 33, 38);
-	--background-secondary: rgb(38, 43, 51);
-	--background-semi-light: rgb(44, 51, 60);
-	--background-light: rgb(53, 61, 71);
-	--background-lighter: rgb(56, 66, 79);
-
-	--white: rgb(230, 230, 230);
-	--light-gray: rgb(180, 180, 180);
-	--very-light-gray: rgb(200, 200, 200);
-	--gray: rgb(150, 150, 150);
-
-	--gray-15: rgb(150, 150, 150, 0.15);
-
-	--accent: rgb(255, 90, 160);
-	--accent-60: rgb(255, 90, 160, 0.6);
-	--accent-30: rgb(255, 90, 160, 0.3);
-}
-
-html {
-	overflow: hidden;
-	height: 100vh;
-}
-
-body {
-	background-color: var(--background-main);
-	color: var(--white);
-
-	font-family: Roboto;
-
-	margin: 0 calc(calc(100% - 600px) * 0.3);
-
-	font-size: 0.9em;
-
-	height: 100%;
-}
-
-.generic-block {
-	margin: 10px;
-	padding: 15px;
-	background-color: var(--background-secondary);
-	border-radius: 10px;
-}
-
-.generic-block-divider {
-	margin: 15px 0px;
-	height: 2px;
-	background-color: var(--gray-15);
-}
-
-button {
-	background-color: var(--accent);
-	color: var(--white);
-	font-weight: 600;
-	border: none;
-	padding: 10px;
-	border-radius: 10px;
-}
-
-/* ----- SCROLLBAR ----- */
-
-::-webkit-scrollbar {
-	width: 5px;
-}
-
-::-webkit-scrollbar-track {
-	background: none;
-}
-
-::-webkit-scrollbar-thumb {
-	background: var(--background-light);
-}
-
-::-webkit-scrollbar-thumb:hover {
-	background: var(--background-lighter);
-}
-
-* {
-	scrollbar-color: var(--background-lighter) transparent;
-}
-
-/* ----- HEADER ----- */
-
-#header {
-	position: relative;
-	z-index: 2;
-
-	margin-top: 0px;
-
-	max-height: 20px;
-
-	display: flex;
-	justify-content: space-between;
-
-	background-color: var(--background-light);
-	border-radius: 0px 0px 10px 10px;
-}
-
-#header img {
-	height: 20px;
-}
-
-#burger-button {
-	display: none;
-}
-
-#logo {
-	display: flex;
-	justify-content: flex-start;
-}
-
-#settings-button {
-	display: flex;
-	justify-content: flex-end;
-}
-
-#burger-checkbox {
-	display: none;
-}
-
 /* ----- MAIN ----- */
 
 #main {
 	display: grid;
 	align-items: start;
-	grid-template-columns: 76px 1fr;
+	grid-template-columns: 56px 1fr;
 	height: calc(100% - 60px);
 }
 
@@ -131,15 +11,18 @@ button {
 
 #nav {
 	overflow-y: scroll;
-	margin: 0;
-	height: calc(100% - 10px);
-}
+	scrollbar-width: none;
+	height: calc(100% - 16px);
 
-#nav-inner {
 	padding: 8px;
+	background-color: var(--background-dark);
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
+}
+
+#nav::-webkit-scrollbar {
+	width: 0;
 }
 
 .nav-line {
@@ -158,8 +41,7 @@ button {
 
 .nav-button img {
 	border-radius: 100%;
-	width: 28px;
-	padding: 6px;
+	width: 40px;
 }
 
 .nav-username {
@@ -171,7 +53,7 @@ button {
 #profile {
 	display: grid;
 	align-items: start;
-	grid-template-columns: 300px 3fr;
+	grid-template-columns: 350px 1fr;
 	height: 100%;
 	overflow: hidden;
 }
@@ -181,6 +63,10 @@ button {
 }
 
 /* ----- FIRST PROFILE TAB ----- */
+
+#profile-info {
+	background-color: var(--background-secondary);
+}
 
 #profile-main-block {
 	padding: 0;
@@ -194,7 +80,6 @@ button {
 #banner {
 	background-color: var(--accent);
 	height: 70px;
-	border-radius: 10px 10px 0px 0px;
 }
 
 #avatar {
@@ -207,8 +92,7 @@ button {
 }
 
 #profile-main-info {
-	margin: 15px;
-	padding-bottom: 15px;
+	padding: 15px;
 	box-sizing: border-box;
 }
 
@@ -236,6 +120,10 @@ button {
 	color: var(--light-gray);
 }
 
+#profile-secondary-block > div {
+	padding: 10px 15px;
+}
+
 #profile-buttons,
 #user-follow-info {
 	display: grid;
@@ -254,10 +142,6 @@ button {
 	font-weight: 500;
 }
 
-#user-pronouns {
-	margin-bottom: 15px;
-}
-
 #user-location,
 #user-birthday {
 	margin-bottom: 5px;
@@ -265,7 +149,6 @@ button {
 
 .pronoun {
 	display: inline-block;
-	margin: 4px 0px 0px 0px;
 	padding: 4px;
 
 	background-color: var(--accent-30);
@@ -288,6 +171,7 @@ button {
 	display: flex;
 	align-items: center;
 	gap: 20px;
+	border-bottom: 2px solid var(--background-secondary);
 }
 
 #create-post > textarea {
@@ -304,23 +188,27 @@ button {
 }
 
 #create-post > textarea:focus {
-	outline: none;
+	outline: 1px solid var(--white);
 	caret-color: var(--white);
 }
 
 #profile-posts {
+	background-color: var(--background-dark);
 	display: flex;
 	flex-direction: column;
 }
 
 .post {
+	position: relative;
 	display: inline-block;
 	max-width: 100%;
 	overflow-wrap: anywhere;
 	color: var(--very-light-gray);
+
+	border-bottom: 2px solid var(--background-secondary);
 }
 
-.post-heading {
+.post-heading, .post-author {
 	display: flex;
 	gap: 10px;
 	align-items: center;
@@ -328,11 +216,21 @@ button {
 }
 
 .post-avatar {
-	display: block;
+	position: absolute;
+	left: 20px;
+	top: 15px;
+
 	width: 40px;
 	height: 40px;
+
 	background-color: var(--background-light);
 	border-radius: 100%;
+}
+
+.post-author {
+	position: absolute;
+	left: 70px;
+	top: 15px;
 }
 
 .post-author-name {
@@ -347,6 +245,11 @@ button {
 	font-weight: 300;
 }
 
+.post-text {
+	margin-top: 24px;
+	margin-left: 50px;
+}
+
 .post-timestamp {
 	font-size: 0.9em;
 	font-weight: 300;
@@ -354,12 +257,14 @@ button {
 	display: flex;
 	align-items: center;
 	margin-top: 5px;
+	margin-left: 50px;
 }
 
 .post-reactions {
 	margin-top: 10px;
 	display: flex;
 	gap: 5px;
+	margin-left: 50px;
 }
 
 .add-reaction-button {
@@ -371,14 +276,19 @@ button {
 }
 
 @media (width > 800px) {
+	html {
+		overflow: hidden;
+		height: 100vh;
+	}
+
 	#profile-info,
 	#profile-posts {
-		max-height: calc(100% - 10px);
+		height: 100%;
 		overflow-y: scroll;
 	}
 }
 
-@media (width <= 800px) {
+@media handheld, (width <= 800px) {
 	body {
 		margin: 0;
 	}
@@ -408,15 +318,15 @@ button {
 
 		transition: transform 0.5s ease-in-out;
 
-		width: 60%;
+		width: 50%;
 		height: 100%;
 
-		background-color: var(--background-semi-light);
+		background-color: var(--nav-mobile-color);
 		border-radius: 0px 10px 10px 0px;
 	}
 
-	#nav-inner {
-		background-color: var(--background-semi-light);
+	#nav {
+		background-color: var(--nav-mobile-color);
 		padding: 80px 25px;
 		margin: 0;
 	}
@@ -451,7 +361,7 @@ button {
 	}
 }
 
-@media (width <= 600px) {
+@media handheld, (width <= 600px) {
 	#profile-info {
 		display: block;
 	}

@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+	--background-main: rgb(29, 33, 38);
+	--background-dark: rgb(38, 45, 53);
+	--background-secondary: rgb(44, 51, 61);
+	--nav-mobile-color: rgb(56, 64, 74);
+	--background-light: rgb(62, 72, 84);
+	--background-lighter: rgb(89, 103, 120);
+
+	--white: rgb(230, 230, 230);
+	--light-gray: rgb(180, 180, 180);
+	--very-light-gray: rgb(200, 200, 200);
+	--gray: rgb(150, 150, 150);
+
+	--gray-15: rgb(150, 150, 150, 0.15);
+}
+
+body {
+	background-color: var(--background-main);
+	color: var(--white);
+
+	margin: 0 calc(calc(100% - 600px) * 0.2);
+
+	font-size: 0.9em;
+
+	height: 100%;
+}
+
+* {
+	font-family: "Inter", sans-serif;
+}
+
+.generic-block {
+	padding: 20px;
+}
+
+.generic-block-divider {
+	margin: 15px 0px;
+	height: 2px;
+	background-color: var(--gray-15);
+}
+
+button, input[type="submit"] {
+	background-color: var(--accent);
+	color: var(--text-on-custom-color);
+	font-weight: 600;
+	border: none;
+	padding: 10px;
+	border-radius: 10px;
+
+	font-family: "PT Sans", "Inter", sans-serif;
+
+	cursor: pointer;
+}
+
+/* ----- SCROLLBAR ----- */
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+::-webkit-scrollbar-track {
+	background: none;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--background-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--background-lighter);
+}
+
+* {
+	scrollbar-color: var(--background-lighter) transparent;
+}
+
+/* ----- HEADER ----- */
+
+#header {
+	position: relative;
+	z-index: 2;
+
+	margin-top: 0px;
+
+	max-height: 20px;
+
+	display: flex;
+	justify-content: space-between;
+
+	background-color: var(--background-light);
+}
+
+#header img {
+	height: 20px;
+}
+
+#burger-button {
+	display: none;
+}
+
+#logo {
+	display: flex;
+	justify-content: flex-start;
+}
+
+#settings-button {
+	display: flex;
+	justify-content: flex-end;
+	cursor: pointer;
+}
+
+#burger-checkbox {
+	display: none;
+}
